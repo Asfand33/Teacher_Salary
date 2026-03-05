@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Salary Sheet - Bright Kids Public High School</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- html2pdf Library for downloading PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Salary Slip Section (This part gets printed/downloaded) -->
+        <div id="salary-slip" class="card">
+            <div class="header">
+                <div class="logo-container">
+                    <!-- Automatically loads logo.jpg from your folder -->
+                    <img id="school-logo" src="logo.jpg" alt="School Logo">
+                </div>
+                <div class="school-details">
+                    <h1>Bright kids Public High school</h1>
+                    <p>Teacher Salary Sheet</p>
+                </div>
+            </div>
+
+            <form id="salary-form">
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="month">Salary Month</label>
+                        <input type="month" id="month" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-id">Unique ID <small>(Enter ID to auto-fill or create new)</small></label>
+                        <input type="text" id="teacher-id" placeholder="Enter ID (e.g., T001)" required>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="teacher-name">Name of Teacher</label>
+                        <input type="text" id="teacher-name" placeholder="Enter Teacher Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="basic-salary">Basic Salary ($)</label>
+                        <input type="number" id="basic-salary" placeholder="Enter Basic Salary" required>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="bonus">Bonus ($)</label>
+                        <input type="number" id="bonus" value="0" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="security">Security (Amount saved in school) $</label>
+                        <input type="number" id="security" value="0" min="0">
+                        <small id="total-security-display" class="security-badge">Total Saved in School: $0</small>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="advance">Advance Taken ($)</label>
+                        <input type="number" id="advance" value="0" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="deduction">Other Deductions ($)</label>
+                        <input type="number" id="deduction" value="0" min="0">
+                    </div>
+                </div>
+
+                <div class="net-salary-box">
+                    <h3>Net Payable Salary: $<span id="net-salary">0</span></h3>
+                </div>
+            </form>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions no-print">
+            <button id="save-btn" class="btn btn-primary">Save Record</button>
+            <button id="print-btn" class="btn btn-secondary">Print Sheet</button>
+            <button id="download-btn" class="btn btn-danger">Download PDF</button>
+            <button id="clear-btn" class="btn btn-warning">Clear Form</button>
+        </div>
+
+        <!-- History Section -->
+        <div class="history-section no-print card">
+            <h2>Monthly Records History</h2>
+            <div class="table-responsive">
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Basic</th>
+                            <th>Bonus</th>
+                            <th>Security</th>
+                            <th>Advance</th>
+                            <th>Deduct</th>
+                            <th>Net Salary</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <!-- Data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
